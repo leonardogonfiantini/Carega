@@ -50,3 +50,7 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# Executables
+nn/tensor/tensor_test
+nn/nn
