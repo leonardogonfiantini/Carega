@@ -1,2 +1,2 @@
 # Carega
-Caréga is a small project for understanding how LLM works, by creating one from scratch using C
+In Genovese, the word "carega" (pronounced /ca·rè·ga/) means "chair" in English.
