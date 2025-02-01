@@ -11,8 +11,9 @@ typedef struct {
 Tensor *tensor_create(int rows, int cols);
 Tensor *tensor_dot(Tensor *a, Tensor *b);
 
-void tensor_set(Tensor *t, int row, int col, double value);
 double tensor_get(Tensor *t, int row, int col);
+
+void tensor_set(Tensor *t, int row, int col, double value);
 void tensor_free(Tensor *t);
 void tensor_randomize(Tensor *t);
 void tensor_print(Tensor *t);

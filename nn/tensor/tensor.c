@@ -22,8 +22,23 @@ Tensor *tensor_dot(Tensor *a, Tensor *b) {
         return NULL;
     }
 
-    printf("ciao");
-    return a;
+    if (a->cols != b->rows) {
+        printf("The columns of the first tensor are different than the rows of the second tensor\n");
+        return NULL;
+    }
+
+    Tensor* dot = tensor_create(a->rows, b->cols);
+
+    for (int i = 0; i < a->rows; i++) {
+        for (int j = 0; j < b->cols; j++) {
+            dot->data[i * b->cols + j] = 0.0;
+            for (int k = 0; k < a->cols; k++) {
+                dot->data[i * b->cols + j] += a->data[i * a->cols + k] * b->data[k * b->cols + j];
+            }
+        }
+    }
+    
+    return dot;
 }
 
 void tensor_set(Tensor *t, int row, int col, double value) {
@@ -32,7 +47,7 @@ void tensor_set(Tensor *t, int row, int col, double value) {
         return;
     }
 
-    t->data[row + col] = value;
+    t->data[t->cols * row + col] = value;
 }
 
 double tensor_get(Tensor *t, int row, int col) {
@@ -41,7 +56,7 @@ double tensor_get(Tensor *t, int row, int col) {
         return 0;
     }
 
-    return t->data[row+col];
+    return t->data[t->cols * row + col];
 }
 
 void tensor_free(Tensor *t) {
